@@ -3,7 +3,6 @@ from bindings import calculator_binding
 import matplotlib.pyplot as plt
 import numpy as np
 
-from factory import CreateOrbitAttitude
 from IOrbit import IOrbit
 from IAttitude import IAttitude
 
