@@ -18,11 +18,8 @@ class SkyfieldOrbit(IOrbit, IComponent):
         # 作ったときの時間
         tle_time = self.__line2tletime(line1,line2)
         self.__t = self.__ts.utc(tle_time)
-        
         self.__sat = EarthSatellite(line1, line2)
-        
         self.__pos = None
-        # print(np.degrees(self.calc_beta_angle()))
     
     def step(self, dt) -> None:
         # dt秒ごとの位置を計算

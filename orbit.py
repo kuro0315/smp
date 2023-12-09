@@ -5,12 +5,6 @@ from i_component import IComponent
 class Orbit(IOrbit, IComponent):
     Re = 6378.137 # km
     def __init__ (self) -> None:
-        """軌道のクラス
-
-        Args:
-            beta (float): β角度[radian]
-            h (float): 高度[km]
-        """
         self.beta = np.radians(45.51)
         self.h = 348.723 # km
         self.theta = np.radians(0)
