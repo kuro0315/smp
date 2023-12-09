@@ -1,6 +1,6 @@
 import numpy as np
-from IOrbit import IOrbit
-from IComponent import IComponent
+from i_orbit import IOrbit
+from i_component import IComponent
 
 from skyfield.api import load, EarthSatellite
 from datetime import datetime, timedelta, timezone

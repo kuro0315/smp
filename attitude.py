@@ -1,8 +1,8 @@
 from injector import inject
 import numpy as np
-from IOrbit import IOrbit
-from IAttitude import IAttitude
-from IComponent import IComponent
+from i_orbit import IOrbit
+from i_attitude import IAttitude
+from i_component import IComponent
 
 class Attitude(IAttitude, IComponent):
     @inject

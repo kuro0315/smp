@@ -1,6 +1,6 @@
 import injector
-from IOrbit import IOrbit
-from IAttitude import IAttitude
+from i_orbit import IOrbit
+from i_attitude import IAttitude
 
 from orbit import Orbit
 from attitude import Attitude

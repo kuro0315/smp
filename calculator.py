@@ -3,8 +3,8 @@ from bindings import calculator_binding
 import matplotlib.pyplot as plt
 import numpy as np
 
-from IOrbit import IOrbit
-from IAttitude import IAttitude
+from i_orbit import IOrbit
+from i_attitude import IAttitude
 
 class Calculator():
     @inject

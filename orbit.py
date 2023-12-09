@@ -1,6 +1,6 @@
 import numpy as np
-from IOrbit import IOrbit
-from IComponent import IComponent
+from i_orbit import IOrbit
+from i_component import IComponent
 
 class Orbit(IOrbit, IComponent):
     Re = 6378.137 # km

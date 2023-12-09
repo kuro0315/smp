@@ -1,6 +1,6 @@
 import numpy as np
 
-from IComponent import IComponent
+from i_component import IComponent
 
 class IOrbit(IComponent):
     def GetSunVec(self) -> np.ndarray:
