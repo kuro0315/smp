@@ -59,29 +59,3 @@ class SkyfieldOrbit(IOrbit, IComponent):
         tle_time = datetime(2000+(epoch_year), 1, 1,0,0,0, tzinfo=timezone.utc) + timedelta( days = epoch_day) 
         print(tle_time)
         return tle_time
-    
-    #β角を計算する
-    def calc_beta_angle(self):
-        position = self.__earth.at(self.__t).observe(self.__sun)
-        ra, dec, distance = position.radec()
-
-        #定数の定義
-        d = np.radians(dec.degrees) # 赤経
-        r = ra.radians # 赤緯
-        o0 = self.__sat.model.nodeo # 初昇交点赤経
-        i = self.__sat.model.inclo # 軌道傾斜角
-        J2 = 0.00108262 # 扁球摂動定数
-        Req = 6378.1 # 地球の赤道半径
-        m = 398600 # 地球重力定数
-        h = 400
-        R = Req + h # 半直弦
-        # 昇交点赤経oの時間変化 do (rad/s)
-        do = - 3/2 * J2 * (Req/R)*(Req/R) * np.sqrt(m/(R*R*R)) * np.cos(i)
-        # /dayに変換 (rad/day)
-        do = do*60*60*24
-        o0 = o0- do*0
-        return( 
-            np.arcsin( 
-                np.cos(d)*np.sin(i)*np.sin((o0) - r) 
-                + np.sin(d)*np.cos(i)
-            ))
