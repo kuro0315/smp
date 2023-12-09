@@ -7,29 +7,16 @@ from i_component import IComponent
 class Attitude(IAttitude, IComponent):
     @inject
     def __init__(self, orbit : IOrbit) -> None:
-        self.__SetAttitude(
-            GetPlusX = orbit.GetSatVel,
-            GetPlusZ= lambda: -orbit.GetSatPos()
-        )
+        self.__orbit = orbit
         
     def step(self, dt) -> None:
-        self.__plus_x = self.__CalcPlusX()
-        self.__plus_z = self.__CalcPlusZ()
+        self.__plus_x = self.__orbit.GetSatVel()
+        self.__plus_z = - self.__orbit.GetSatPos()
         
         self.__plus_x /= np.linalg.norm(self.__plus_x)
         self.__plus_z /= np.linalg.norm(self.__plus_z)
         
         self.__plus_y = np.cross(self.__plus_x, self.__plus_z)
-        
-    def __SetAttitude(self, GetPlusX, GetPlusZ) -> None:
-        """軸の設定
-
-        Args:
-            GetPlusX (Callable): +X軸の方向を返す関数
-            GetPlusZ (Callable): +Z軸の方向を返す関数
-        """
-        self.__CalcPlusX = GetPlusX
-        self.__CalcPlusZ = GetPlusZ
     
     def GetPlusX(self) -> np.ndarray:
         return self.__plus_x
