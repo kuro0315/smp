@@ -5,14 +5,6 @@ from i_component import IComponent
 from skyfield.api import load, EarthSatellite
 from datetime import datetime, timedelta, timezone
 
-
-def normalize_print_decorator(func, *args, **kwargs):
-    def wrapper(*args, **kwargs):
-        a = func(*args, **kwargs)
-        print(np.linalg.norm(a))
-        return a
-    return wrapper
-
 line1 = '1 47930U 98067SG  21078.66151466  .00007199  00000-0  13516-3 0  9991'
 line2 = '2 47930  51.6433  65.4945 0003366  59.8640 300.2682 15.49748776   841'
 
